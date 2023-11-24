@@ -1,28 +1,18 @@
-/**
- * POST /api/submit
- */
+
 export async function onRequestPost(context) {
+  
   try {
-    let input = await context.request.formData();
+    let url = await context.request.url;
 
-    // Convert FormData to JSON
-    // NOTE: Allows multiple values per key
-    let output = {};
-    for (let [key, value] of input) {
-      let tmp = output[key];
-      if (tmp === undefined) {
-        output[key] = value;
-      } else {
-        output[key] = [].concat(tmp, value);
-      }
-    }
+    let paramString = url.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
 
-    let pretty = JSON.stringify(output, null, 2);
+    let pretty = JSON.stringify(queryString, null, 2);
     return new Response(pretty, {
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-    });
+  });
   } catch (err) {
     return new Response('Error parsing JSON content', { status: 400 });
   }
