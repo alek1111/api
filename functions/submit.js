@@ -7,8 +7,7 @@ export async function onRequestGet(context) {
     let paramString = url.split('?')[1];
     let queryString = new URLSearchParams(paramString);
 
-    let pretty = JSON.stringify(queryString, null, 2);
-    return new Response(pretty, {
+    return new Response(paramString, {
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
