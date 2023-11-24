@@ -1,5 +1,5 @@
 
-export async function onRequestPost(context) {
+export async function onRequestGet(context) {
   
   try {
     let url = await context.request.url;
