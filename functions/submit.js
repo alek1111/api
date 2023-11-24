@@ -2,7 +2,7 @@
 export async function onRequestGet(context) {
   
   try {
-    let url = await context.request.url;
+    let url = await context.request.url.text();
 
     let paramString = url.split('?')[1];
     let queryString = new URLSearchParams(paramString);
