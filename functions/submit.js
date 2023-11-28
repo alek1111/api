@@ -16,7 +16,7 @@ export async function onRequestGet(context) {
 		return new Response('Error retreiving cache', { status: 400 })
 	}
 	else {
-		return(response);
+		return new Response(response.body,response);
 	}
 	
     return fetch(fetchUrl.concat('?', paramString), {
