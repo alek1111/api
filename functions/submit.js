@@ -2,7 +2,6 @@
 export async function onRequestGet(context) {
   
   const fetchUrl = "https://lusearchapi-na.hawksearch.com/sites/collectionsetcrwdv2/";
-  const cache = caches.default;
   
   try {
     let url = await context.request.url;
