@@ -20,7 +20,7 @@ export async function onRequestGet(context) {
   console.log(response.url);
   console.log(response.body);
   
-  return response;
+  return response.header;
   
   } catch (err) {
     return new Response('Error parsing JSON content', { status: 400 });
