@@ -8,20 +8,12 @@ export async function onRequestGet(context) {
     let url = await context.request.url;
 
     let paramString = url.split('?')[1];
-    let queryString = new URLSearchParams(paramString);
-	
-	let response = cache.match(fetchUrl.concat('?', paramString));
-	
-	if (!response) {
-		return new Response('Error retreiving cache', { status: 400 })
-	}
-	else {
-		return new Response(response.body, { status: 200 });
-	}
 	
     return fetch(fetchUrl.concat('?', paramString), {
       method: "GET",
-	  cf: { cacheKey: fetchUrl.concat('?', paramString) },
+	  cf: { cacheTtl: 1200,
+			cacheEverything: true,
+			cacheKey: fetchUrl.concat('?', paramString) },
   });
   
   } catch (err) {
