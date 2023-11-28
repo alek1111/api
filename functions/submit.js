@@ -8,6 +8,8 @@ export async function onRequestGet(context) {
 
     let paramString = url.split('?')[1];
 	
+	console.log(fetchUrl.concat('?', paramString));
+	
     return fetch(fetchUrl.concat('?', paramString), {
       method: "GET",
 	  cf: { cacheTtl: 1200,
