@@ -9,7 +9,9 @@ export async function onRequestGet(context) {
     let paramString = url.split('?')[1];
 	
     // Construct the cache key from the cache URL
-    const cacheKey = new Request(cacheUrl.toString().concat('?', paramString));
+    const cacheKey = new Request(cacheUrl.toString().concat('?', paramString), {
+          method: "GET",
+        });
     const cache = caches.default;
 
     // Check whether the value is already available in the cache
