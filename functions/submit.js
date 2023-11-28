@@ -9,14 +9,18 @@ export async function onRequestGet(context) {
 
     let paramString = url.split('?')[1];
 	
-	console.log(fetchUrl.concat('?', paramString));
-	
-    return fetch(fetchUrl.concat('?', paramString), {
+    let response = new Response(fetch(fetchUrl.concat('?', paramString), {
       method: "GET",
 	  cf: { cacheTtl: 1200,
 			cacheEverything: true,
 			cacheKey: fetchUrl.concat('?', paramString) },
-  });
+  }));
+  
+  console.log(response.header);
+  console.log(response.url);
+  console.log(response.body);
+  
+  return response;
   
   } catch (err) {
     return new Response('Error parsing JSON content', { status: 400 });
