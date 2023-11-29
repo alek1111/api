@@ -13,6 +13,7 @@ export async function onRequestGet(context) {
       method: "GET",
 	  cf: { cacheTtl: 1200,
 			cacheEverything: true,
+	  }
   });
   
   } catch (err) {
