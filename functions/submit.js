@@ -34,7 +34,7 @@ export async function onRequestGet(context) {
       // Any changes made to the response here will be reflected in the cached value
       response.headers.append("Cache-Control", "s-maxage=1000");
 
-      ctx.waitUntil(cache.put(cacheKey, response.clone()));
+      context.waitUntil(cache.put(cacheKey, response.clone()));
     } else {
       console.log(`Cache hit for: ${context.request.url}.`);
     }
