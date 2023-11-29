@@ -13,8 +13,8 @@ export async function onRequestGet(context) {
       method: "GET",
 	  cf: {
         // Always cache this fetch regardless of content type
-        // for a max of 5 seconds before revalidating the resource
-        cacheTtl: 5,
+        // for a max of 300 seconds before revalidating the resource
+        cacheTtl: 300,
         cacheEverything: true,
         //Enterprise only feature, see Cache API for other plans
         cacheKey: url,
