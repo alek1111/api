@@ -20,10 +20,10 @@ export async function onRequestGet(context) {
 
     if (!response) {
       console.log(
-        `Response for request url: ${request.url} not present in cache. Fetching and caching request.`
+        `Response for request url: ${context.request.url} not present in cache. Fetching and caching request.`
       );
       // If not in cache, get it from origin
-      response = await fetch(request);
+      response = await fetch(cacheKey);
 
       // Must use Response constructor to inherit all of response's fields
       response = new Response(response.body, response);
@@ -32,11 +32,11 @@ export async function onRequestGet(context) {
       // will limit the response to be in cache for 10 seconds max
 
       // Any changes made to the response here will be reflected in the cached value
-      response.headers.append("Cache-Control", "s-maxage=10");
+      response.headers.append("Cache-Control", "s-maxage=1000");
 
       ctx.waitUntil(cache.put(cacheKey, response.clone()));
     } else {
-      console.log(`Cache hit for: ${request.url}.`);
+      console.log(`Cache hit for: ${context.request.url}.`);
     }
     return response;
 }
