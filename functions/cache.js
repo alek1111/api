@@ -11,9 +11,6 @@ export async function onRequestGet(context) {
 	
     return fetch(fetchUrl.concat('?', paramString), {
       method: "GET",
-	  cf: { cacheTtl: 1200,
-			cacheEverything: false,
-	  }
   });
   
   } catch (err) {
