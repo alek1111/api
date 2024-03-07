@@ -7,7 +7,7 @@ export async function onRequestGet(context) {
   try {
     let url = await context.request.url;
 	
-	if (request.url.includes("ntt") || request.url.includes("lpurl")) 
+	if (request.url.indexOf('ntt=') > 0 || request.url.indexOf('lpurl') > 0) 
 		{
 
 			let paramString = url.split('?')[1];
