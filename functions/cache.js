@@ -7,22 +7,22 @@ export async function onRequestGet(context) {
   try {
     let url = await context.request.url;
 	
-	if (url.includes("NTT=") || url.includes("LPURL=")) 
+	if (request.url.includes("ntt") || request.url.includes("lpurl")) 
 		{
 
-		let paramString = url.split('?')[1];
+			let paramString = url.split('?')[1];
 	
-		return fetch(fetchUrl.concat('?', paramString), {
-		method: "GET",
-		cf: {
-			// Always cache this fetch regardless of content type
-			// for a max of 300 seconds before revalidating the resource
-			cacheTtl: 300,
-			cacheEverything: true,
-			//Enterprise only feature, see Cache API for other plans
-			cacheKey: url,
-				},
-			});
+			return fetch(fetchUrl.concat('?', paramString), {
+			method: "GET",
+			cf: {
+				// Always cache this fetch regardless of content type
+				// for a max of 300 seconds before revalidating the resource
+				cacheTtl: 300,
+				cacheEverything: true,
+				//Enterprise only feature, see Cache API for other plans
+				cacheKey: url,
+					},
+				});
 		}
   } catch (err) {
     return new Response('Error parsing JSON content', { status: 400 });
