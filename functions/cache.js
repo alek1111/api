@@ -6,12 +6,11 @@ export async function onRequestGet(context) {
   
   try {
     let url = await context.request.url;
-	
-	if (request.url.indexOf('ntt=') > 0 || request.url.indexOf('lpurl') > 0) 
-		{
 
-			let paramString = url.split('?')[1];
+	let paramString = url.split('?')[1];
 	
+	if (paramString.includes('ntt=') || paramString.includes('lpurl')) 
+		{
 			return fetch(fetchUrl.concat('?', paramString), {
 			method: "GET",
 			cf: {
