@@ -11,10 +11,10 @@ export async function onRequestGet(context) {
 	
 	if (paramString.includes('ntt=') || paramString.includes('lpurl')) 
 		{
-			const now = new Date();
-			const tomorrow = new Date();
+			const today = new Date();
+			const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 			tomorrow.setHours(4, 0, 0, 0);
-			const seconds = (tomorrow - now) / 1000;
+			const seconds = (tomorrow.getTime() - today.getTime()) / 1000;
 
 			return fetch(fetchUrl.concat('?', paramString), {
 			method: "GET",
