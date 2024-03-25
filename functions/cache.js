@@ -11,14 +11,16 @@ export async function onRequestGet(context) {
 	
 	if (paramString.includes('ntt=') || paramString.includes('lpurl')) 
 		{
+			const now = new Date();
+			const tomorrow = new Date();
+			tomorrow.setHours(4, 0, 0, 0);
+			const seconds = (tomorrow - now) / 1000;
+
 			return fetch(fetchUrl.concat('?', paramString), {
 			method: "GET",
 			cf: {
-				// Always cache this fetch regardless of content type
-				// for a max of 300 seconds before revalidating the resource
-				cacheTtl: 300,
+				cacheTtl: seconds,
 				cacheEverything: true,
-				//Enterprise only feature, see Cache API for other plans
 				cacheKey: url,
 					},
 				});
