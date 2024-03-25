@@ -13,8 +13,7 @@ export async function onRequestGet(context) {
 		{
 			const today = new Date();
 			const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
-			tomorrow.setHours(4, 0, 0, 0);
-			const seconds = (tomorrow.getTime() - today.getTime()) / 1000;
+			int seconds = Math.floor((tomorrow.getTime() - today.getTime()) / 1000);
 			console.log(seconds);
 
 			return fetch(fetchUrl.concat('?', paramString), {
