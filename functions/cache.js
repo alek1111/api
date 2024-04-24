@@ -24,7 +24,8 @@ export async function onRequestGet(context) {
 				cacheKey: url,
 					},
 				});
-				console.log(new Map(response.headers));  
+				let requestHeaders = JSON.stringify([...request.headers]);
+				console.log(requestHeaders);  
 				return response;
 		}
   } catch (err) {
