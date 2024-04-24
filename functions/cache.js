@@ -16,10 +16,11 @@ export async function onRequestGet(context) {
 			const seconds = Math.floor((tomorrow.getTime() + 18000000 - today.getTime()) / 1000);
 			console.log(seconds);
 
-			return fetch(fetchUrl.concat('?', paramString), {
+			let response = await fetch(fetchUrl.concat('?', paramString), {
 			method: "GET",
 			cf: {
 				cacheTtl: seconds,
+				cacheEverything: true,
 				cacheKey: url,
 					},
 				});
@@ -27,4 +28,6 @@ export async function onRequestGet(context) {
   } catch (err) {
     return new Response('Error parsing JSON content', { status: 400 });
   }
+	console.log(response.headers);  
+	return response;
 }
