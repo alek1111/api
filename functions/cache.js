@@ -24,8 +24,9 @@ export async function onRequestGet(context) {
 				cacheKey: url,
 					},
 				});
-				let requestHeaders = JSON.stringify([...request.headers]);
-				console.log(requestHeaders);  
+				let headersObject = Object.fromEntries(request.headers);
+				let requestHeaders = JSON.stringify(headersObject, null, 2);
+				console.log(`Request headers: ${requestHeaders}`);  
 				return response;
 		}
   } catch (err) {
