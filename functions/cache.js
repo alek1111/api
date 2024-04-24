@@ -24,10 +24,10 @@ export async function onRequestGet(context) {
 				cacheKey: url,
 					},
 				});
+				console.log(response.headers);  
+				return response;
 		}
   } catch (err) {
     return new Response('Error parsing JSON content', { status: 400 });
   }
-	console.log(response.headers);  
-	return response;
 }
