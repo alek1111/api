@@ -20,7 +20,6 @@ export async function onRequestGet(context) {
 			method: "GET",
 			cf: {
 				cacheTtl: seconds,
-				cacheEverything: true,
 				cacheKey: url,
 					},
 				});
