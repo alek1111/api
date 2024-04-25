@@ -21,7 +21,7 @@ export async function onRequestGet(context) {
 			cf: {
 				cacheTtl: seconds,
 				cacheEverything: true,
-				cacheKey: url,
+				//cacheKey: url,
 					},
 				});
 				let headersObject = Object.fromEntries(response.headers);
