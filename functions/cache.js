@@ -24,7 +24,7 @@ export async function onRequestGet(context) {
 				//cacheKey: url,
 					},
 				});
-				let headersObject = Object.fromEntries(response.headers.cf-cache-status);
+				let headersObject = Object.fromEntries(response.headers);
 				let responseHeaders = JSON.stringify(headersObject, null, 2);
 				console.log(`Response headers: ${responseHeaders}`);  
 				return response;
