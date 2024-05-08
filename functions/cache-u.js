@@ -2,7 +2,7 @@
 
 export async function onRequestGet(context) {
   
-  const fetchUrl = "https://test.hawksearch.net/sites/collectionsetcrwdv2/";
+  const fetchUrl = "https://winstonbrands.test.hawksearch.net/sites/collectionsetcrwdv2/";
   
   try {
     let url = await context.request.url;
