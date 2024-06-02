@@ -9,7 +9,7 @@ export async function onRequestGet(context) {
 
 	let paramString = url.split('?')[1];
 	
-	if (paramString.includes('ntt=') || paramString.includes('lpurl')) 
+	if (paramString.includes('ntt=') || paramString.includes('lpurl') || paramString.includes('GetSuggestions')) 
 		{
 			const today = new Date();
 			const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
