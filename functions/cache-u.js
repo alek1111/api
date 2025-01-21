@@ -13,7 +13,8 @@ export async function onRequestGet(context) {
 		{
 			const today = new Date();
 			const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
-			const seconds = Math.floor((tomorrow.getTime() + 18000000 - today.getTime()) / 1000);
+			const seconds = Math.floor((tomorrow.getTime() + 21600000 + 27000000 - today.getTime()) / 1000);
+			if (seconds >= 86400) {seconds -= 86400;}
 			console.log(seconds);
 
 			let response = await fetch(fetchUrl.concat('?', paramString), {
